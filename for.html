@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    let humanScore = 0;
+let computerScore = 0;
+
+function getComputerChoice() {
+    let choices = Math.random();
+
+    if (choices < 0.33) {
+        return "rock";
+    } else if (choices < 0.66) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
+}
+
+function getHumanChoice() {
+    let choices = window.prompt("rock, paper, or scissors");
+    if (choices === "rock" || choices === "paper" || choices === "scissors") {
+        return choices;
+    } else {
+        alert("Invalid choice! Please enter rock, paper, or scissors.");
+        return getHumanChoice();
+    }
+}
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        return "It's a tie!";
+    }
+
+    if (
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        humanScore++;
+        return "Human wins!";
+    } else {
+        computerScore++;
+        return "Computer wins!";
+    }
+}
+
+function playGame() {
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
+    console.log("You chose: " + humanChoice);
+    console.log("Computer chose: " + computerChoice);
+    let result = playRound(humanChoice, computerChoice);
+    console.log(result);
+    console.log("Human score: " + humanScore);
+    console.log("Computer score: " + computerScore);
+}
+
+  for(i=0;i<5;i++){
+    playGame();
+  }
+
+  console.log("Final Score is :");
+  console.log("Human Score :" +humanScore);
+  console.log("Computer Score :" +computerScore);
+  if(humanScore>computerScore){
+    console.log("HUMAN WINS");
+  }else{
+    console.log("COMPUTER WINS");
+  }
+
+    
+
+
+  </script>
+
+</body>
+</html>
+
